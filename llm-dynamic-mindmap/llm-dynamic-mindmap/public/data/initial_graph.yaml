@@ -1,0 +1,227 @@
+# 初期マインドマップデータ
+# YAMLのアンカー・エイリアス機能で再利用可能な設定を定義
+
+metadata:
+  title: "AI・データサイエンス知識グラフ"
+  description: "機械学習を中心とした概念マップ"
+  created_at: "2024-01-01"
+  author: "LLM Dynamic Mindmap"
+
+# 共通設定（アンカー）
+defaults:
+  node_settings: &default_node
+    visible: true
+    expanded: false
+    
+  edge_settings: &default_edge
+    weight: 1.0
+    
+# ノードデータ
+nodes:
+  # ルートノード
+  - id: "ml"
+    label: "機械学習"
+    depth: 0
+    <<: *default_node
+    
+  # 深さ1のノード
+  - id: "supervised"
+    label: "教師あり学習"
+    depth: 1
+    <<: *default_node
+    
+  - id: "unsupervised"
+    label: "教師なし学習"
+    depth: 1
+    <<: *default_node
+    
+  - id: "deep_learning"
+    label: "深層学習"
+    depth: 1
+    <<: *default_node
+    
+  - id: "reinforcement"
+    label: "強化学習"
+    depth: 1
+    <<: *default_node
+
+  # 深さ2のノード - 教師あり学習
+  - id: "regression"
+    label: "回帰分析"
+    depth: 2
+    <<: *default_node
+    
+  - id: "classification"
+    label: "分類"
+    depth: 2
+    <<: *default_node
+    
+  - id: "decision_tree"
+    label: "決定木"
+    depth: 2
+    <<: *default_node
+    
+  - id: "svm"
+    label: "SVM"
+    depth: 2
+    <<: *default_node
+
+  # 深さ2のノード - 教師なし学習
+  - id: "clustering"
+    label: "クラスタリング"
+    depth: 2
+    <<: *default_node
+    
+  - id: "dimensionality"
+    label: "次元削減"
+    depth: 2
+    <<: *default_node
+
+  # 深さ2のノード - 深層学習
+  - id: "neural_network"
+    label: "ニューラルネットワーク"
+    depth: 2
+    <<: *default_node
+    
+  - id: "cnn"
+    label: "CNN"
+    depth: 2
+    <<: *default_node
+    
+  - id: "rnn"
+    label: "RNN"
+    depth: 2
+    <<: *default_node
+    
+  - id: "transformer"
+    label: "Transformer"
+    depth: 2
+    <<: *default_node
+
+  # 深さ3のノード
+  - id: "kmeans"
+    label: "K-means"
+    depth: 3
+    <<: *default_node
+    
+  - id: "pca"
+    label: "PCA"
+    depth: 3
+    <<: *default_node
+    
+  - id: "attention"
+    label: "Attention"
+    depth: 3
+    <<: *default_node
+    
+  - id: "bert"
+    label: "BERT"
+    depth: 3
+    <<: *default_node
+    
+  - id: "gpt"
+    label: "GPT"
+    depth: 3
+    <<: *default_node
+
+# エッジデータ
+edges:
+  # ルート → 深さ1
+  - source: "ml"
+    target: "supervised"
+    relation: "手法の一つ"
+    <<: *default_edge
+    
+  - source: "ml"
+    target: "unsupervised"
+    relation: "手法の一つ"
+    <<: *default_edge
+    
+  - source: "ml"
+    target: "deep_learning"
+    relation: "発展形"
+    <<: *default_edge
+    
+  - source: "ml"
+    target: "reinforcement"
+    relation: "手法の一つ"
+    <<: *default_edge
+
+  # 教師あり学習 → 深さ2
+  - source: "supervised"
+    target: "regression"
+    relation: "タスク"
+    <<: *default_edge
+    
+  - source: "supervised"
+    target: "classification"
+    relation: "タスク"
+    <<: *default_edge
+    
+  - source: "supervised"
+    target: "decision_tree"
+    relation: "アルゴリズム"
+    <<: *default_edge
+    
+  - source: "supervised"
+    target: "svm"
+    relation: "アルゴリズム"
+    <<: *default_edge
+
+  # 教師なし学習 → 深さ2
+  - source: "unsupervised"
+    target: "clustering"
+    relation: "タスク"
+    <<: *default_edge
+    
+  - source: "unsupervised"
+    target: "dimensionality"
+    relation: "タスク"
+    <<: *default_edge
+
+  # 深層学習 → 深さ2
+  - source: "deep_learning"
+    target: "neural_network"
+    relation: "基礎"
+    <<: *default_edge
+    
+  - source: "deep_learning"
+    target: "cnn"
+    relation: "アーキテクチャ"
+    <<: *default_edge
+    
+  - source: "deep_learning"
+    target: "rnn"
+    relation: "アーキテクチャ"
+    <<: *default_edge
+    
+  - source: "deep_learning"
+    target: "transformer"
+    relation: "アーキテクチャ"
+    <<: *default_edge
+
+  # 深さ2 → 深さ3
+  - source: "clustering"
+    target: "kmeans"
+    relation: "アルゴリズム"
+    <<: *default_edge
+    
+  - source: "dimensionality"
+    target: "pca"
+    relation: "手法"
+    <<: *default_edge
+    
+  - source: "transformer"
+    target: "attention"
+    relation: "核心技術"
+    <<: *default_edge
+    
+  - source: "transformer"
+    target: "bert"
+    relation: "応用モデル"
+    <<: *default_edge
+    
+  - source: "transformer"
+    target: "gpt"
+    relation: "応用モデル"
+    <<: *default_edge

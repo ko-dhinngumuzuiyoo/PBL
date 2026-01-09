@@ -1,0 +1,63 @@
+flowchart TB
+    subgraph UI["🖥️ UI Layer (React)"]
+        App["App.jsx<br/>メインコンポーネント"]
+        Cyto["CytoscapeGraph.jsx<br/>グラフ可視化"]
+    end
+
+    subgraph Core["⚙️ Core Layer"]
+        GM["GraphManager<br/>グラフデータ管理"]
+        LLM["LLMService<br/>API連携"]
+        EMB["Embedding<br/>ベクトル生成"]
+        SIM["Similarity<br/>類似度計算"]
+        YAML["YAMLHandler<br/>YAML処理"]
+    end
+
+    subgraph Data["📁 Data Layer (YAML)"]
+        Config["config.yaml<br/>設定・プロンプト"]
+        Styles["styles.yaml<br/>スタイル定義"]
+        Graph["initial_graph.yaml<br/>初期グラフ"]
+    end
+
+    subgraph External["🌐 External Services"]
+        Claude["Claude API"]
+        OpenAI["OpenAI API"]
+        Mock["Mock Service"]
+        TF["Transformers.js<br/>multilingual-e5-small"]
+    end
+
+    %% UI connections
+    App --> Cyto
+    App --> GM
+    App --> YAML
+    
+    %% Core connections
+    GM --> LLM
+    GM --> EMB
+    GM --> SIM
+    GM --> YAML
+    
+    %% LLM connections
+    LLM --> Claude
+    LLM --> OpenAI
+    LLM --> Mock
+    
+    %% Embedding connections
+    EMB --> TF
+    
+    %% Data connections
+    YAML --> Config
+    YAML --> Styles
+    YAML --> Graph
+
+    %% Dynamic Loop
+    App -.->|"1. ユーザー入力"| GM
+    GM -.->|"2. LLM呼び出し"| LLM
+    LLM -.->|"3. 関連語生成"| GM
+    GM -.->|"4. 埋め込み生成"| EMB
+    GM -.->|"5. グラフ更新"| App
+    App -.->|"6. 再描画"| Cyto
+
+    style UI fill:#3b82f6,color:#fff
+    style Core fill:#8b5cf6,color:#fff
+    style Data fill:#22c55e,color:#fff
+    style External fill:#f97316,color:#fff

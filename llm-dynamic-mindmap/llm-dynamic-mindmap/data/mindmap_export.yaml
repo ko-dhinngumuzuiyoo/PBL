@@ -1,0 +1,184 @@
+metadata:
+  title: エクスポートされたマインドマップ
+  exportedAt: '2025-12-19T06:58:11.849Z'
+  nodeCount: 20
+  edgeCount: 19
+nodes:
+  - id: ml
+    label: 機械学習
+    depth: 0
+    visible: true
+    expanded: false
+    llmGenerated: false
+  - id: supervised
+    label: 教師あり学習
+    depth: 1
+    visible: true
+    expanded: false
+    llmGenerated: false
+  - id: unsupervised
+    label: 教師なし学習
+    depth: 1
+    visible: true
+    expanded: false
+    llmGenerated: false
+  - id: deep_learning
+    label: 深層学習
+    depth: 1
+    visible: true
+    expanded: false
+    llmGenerated: false
+  - id: reinforcement
+    label: 強化学習
+    depth: 1
+    visible: true
+    expanded: false
+    llmGenerated: false
+  - id: regression
+    label: 回帰分析
+    depth: 2
+    visible: true
+    expanded: false
+    llmGenerated: false
+  - id: classification
+    label: 分類
+    depth: 2
+    visible: true
+    expanded: false
+    llmGenerated: false
+  - id: decision_tree
+    label: 決定木
+    depth: 2
+    visible: true
+    expanded: false
+    llmGenerated: false
+  - id: svm
+    label: SVM
+    depth: 2
+    visible: true
+    expanded: false
+    llmGenerated: false
+  - id: clustering
+    label: クラスタリング
+    depth: 2
+    visible: true
+    expanded: false
+    llmGenerated: false
+  - id: dimensionality
+    label: 次元削減
+    depth: 2
+    visible: true
+    expanded: false
+    llmGenerated: false
+  - id: neural_network
+    label: ニューラルネットワーク
+    depth: 2
+    visible: true
+    expanded: false
+    llmGenerated: false
+  - id: cnn
+    label: CNN
+    depth: 2
+    visible: true
+    expanded: false
+    llmGenerated: false
+  - id: rnn
+    label: RNN
+    depth: 2
+    visible: true
+    expanded: false
+    llmGenerated: false
+  - id: transformer
+    label: Transformer
+    depth: 2
+    visible: true
+    expanded: false
+    llmGenerated: false
+  - id: kmeans
+    label: K-means
+    depth: 3
+    visible: true
+    expanded: false
+    llmGenerated: false
+  - id: pca
+    label: PCA
+    depth: 3
+    visible: true
+    expanded: false
+    llmGenerated: false
+  - id: attention
+    label: Attention
+    depth: 3
+    visible: true
+    expanded: false
+    llmGenerated: false
+  - id: bert
+    label: BERT
+    depth: 3
+    visible: true
+    expanded: false
+    llmGenerated: false
+  - id: gpt
+    label: GPT
+    depth: 3
+    visible: true
+    expanded: false
+    llmGenerated: false
+edges:
+  - source: ml
+    target: supervised
+    relation: 手法の一つ
+  - source: ml
+    target: unsupervised
+    relation: 手法の一つ
+  - source: ml
+    target: deep_learning
+    relation: 発展形
+  - source: ml
+    target: reinforcement
+    relation: 手法の一つ
+  - source: supervised
+    target: regression
+    relation: タスク
+  - source: supervised
+    target: classification
+    relation: タスク
+  - source: supervised
+    target: decision_tree
+    relation: アルゴリズム
+  - source: supervised
+    target: svm
+    relation: アルゴリズム
+  - source: unsupervised
+    target: clustering
+    relation: タスク
+  - source: unsupervised
+    target: dimensionality
+    relation: タスク
+  - source: deep_learning
+    target: neural_network
+    relation: 基礎
+  - source: deep_learning
+    target: cnn
+    relation: アーキテクチャ
+  - source: deep_learning
+    target: rnn
+    relation: アーキテクチャ
+  - source: deep_learning
+    target: transformer
+    relation: アーキテクチャ
+  - source: clustering
+    target: kmeans
+    relation: アルゴリズム
+  - source: dimensionality
+    target: pca
+    relation: 手法
+  - source: transformer
+    target: attention
+    relation: 核心技術
+  - source: transformer
+    target: bert
+    relation: 応用モデル
+  - source: transformer
+    target: gpt
+    relation: 応用モデル

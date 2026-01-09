@@ -1,0 +1,106 @@
+# LLM動的マインドマップ - 設定ファイル
+# このファイルはアプリケーションの動作を制御します
+
+app:
+  title: "LLM動的マインドマップ"
+  description: "埋め込みベクトル + LLM連携のナレッジグラフ"
+  
+# LLM設定
+llm:
+  # 使用するプロバイダー: anthropic, openai, mock
+  provider: mock  # デフォルトはモック（APIキー不要）
+  
+  anthropic:
+    model: claude-sonnet-4-20250514
+    max_tokens: 1024
+    temperature: 0.7
+    
+  openai:
+    model: gpt-4o-mini
+    max_tokens: 1024
+    temperature: 0.7
+
+# プロンプトテンプレート
+prompts:
+  # キーワード展開プロンプト
+  expand_keyword: |
+    あなたは知識グラフの専門家です。
+    
+    キーワード: {keyword}
+    
+    このキーワードに関連する概念を5〜8個提案してください。
+    各概念には、元のキーワードとの関係性も記述してください。
+    
+    以下のJSON形式で出力してください：
+    [
+      {"word": "関連語1", "relation": "関係性の説明"},
+      {"word": "関連語2", "relation": "関係性の説明"}
+    ]
+    
+    JSONのみを出力し、他の説明は不要です。
+  
+  # 深掘りプロンプト
+  deep_dive: |
+    あなたは知識グラフの専門家です。
+    
+    中心テーマ: {root_theme}
+    現在のノード: {current_node}
+    既存の関連ノード: {existing_neighbors}
+    
+    「{current_node}」をさらに深掘りして、まだ挙げられていない関連概念を5〜8個提案してください。
+    既存のノードと重複しないように注意してください。
+    
+    以下のJSON形式で出力してください：
+    [
+      {"word": "関連語1", "relation": "関係性の説明"},
+      {"word": "関連語2", "relation": "関係性の説明"}
+    ]
+    
+    JSONのみを出力し、他の説明は不要です。
+
+  # 関係性探索プロンプト  
+  find_relations: |
+    あなたは知識グラフの専門家です。
+    
+    以下の2つの概念の関係性を分析してください：
+    - 概念A: {node_a}
+    - 概念B: {node_b}
+    
+    これらの間にはどのような関係がありますか？
+    簡潔に1文で説明してください。
+
+# グラフ設定
+graph:
+  default_layout: cose
+  max_depth: 4
+  max_children_per_node: 5
+  
+  layout_options:
+    cose:
+      animate: true
+      animationDuration: 500
+      nodeRepulsion: 8000
+      idealEdgeLength: 100
+    breadthfirst:
+      animate: true
+      animationDuration: 500
+      directed: true
+      spacingFactor: 1.5
+    circle:
+      animate: true
+      animationDuration: 500
+      
+# ノードの色設定（深さベース）
+node_colors:
+  depth_0: "#3b82f6"  # ルート - 青
+  depth_1: "#8b5cf6"  # 深さ1 - 紫
+  depth_2: "#ec4899"  # 深さ2 - ピンク
+  depth_3: "#f97316"  # 深さ3 - オレンジ
+  depth_4: "#22c55e"  # 深さ4 - 緑
+  default: "#6b7280"  # デフォルト - グレー
+
+# 類似度計算設定
+similarity:
+  default_threshold: 0.6
+  min_threshold: 0.3
+  max_threshold: 0.9

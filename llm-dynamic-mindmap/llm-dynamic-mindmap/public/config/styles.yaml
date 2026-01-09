@@ -1,0 +1,132 @@
+# Cytoscape.js スタイル定義
+# YAMLからCytoscape形式に変換して使用
+
+# ノードの基本スタイル
+node_base:
+  selector: "node"
+  style:
+    background-color: "data(color)"
+    label: "data(label)"
+    width: 50
+    height: 50
+    font-size: "12px"
+    text-valign: center
+    text-halign: center
+    color: "#1e293b"
+    text-outline-width: 2
+    text-outline-color: "#ffffff"
+    border-width: 2
+    border-color: "#3b82f6"
+    transition-property: "background-color, border-color, width, height"
+    transition-duration: "0.3s"
+
+# ルートノードのスタイル
+node_root:
+  selector: "node.root"
+  style:
+    background-color: "#3b82f6"
+    width: 80
+    height: 80
+    font-size: "16px"
+    font-weight: bold
+    border-width: 4
+    border-color: "#1e40af"
+    text-outline-width: 3
+    z-index: 100
+
+# 選択中のノードのスタイル
+node_selected:
+  selector: "node.selected"
+  style:
+    border-width: 4
+    border-color: "#f59e0b"
+    box-shadow: "0 0 20px rgba(245, 158, 11, 0.5)"
+    z-index: 99
+
+# ハイライトノード
+node_highlighted:
+  selector: "node.highlighted"
+  style:
+    background-color: "#ef4444"
+    border-color: "#b91c1c"
+    border-width: 4
+
+# 新規追加ノード（アニメーション用）
+node_new:
+  selector: "node.new"
+  style:
+    background-color: "#22c55e"
+    border-color: "#16a34a"
+
+# LLM生成ノード
+node_llm_generated:
+  selector: "node.llm-generated"
+  style:
+    background-color: "#a855f7"
+    border-color: "#7c3aed"
+
+# エッジの基本スタイル
+edge_base:
+  selector: "edge"
+  style:
+    width: 2
+    line-color: "#94a3b8"
+    curve-style: bezier
+    opacity: 0.7
+    target-arrow-shape: triangle
+    target-arrow-color: "#94a3b8"
+    arrow-scale: 0.8
+
+# 関係性ラベル付きエッジ
+edge_labeled:
+  selector: "edge[relation]"
+  style:
+    label: "data(relation)"
+    font-size: "10px"
+    text-rotation: autorotate
+    text-margin-y: -10
+    color: "#64748b"
+    text-outline-color: "#ffffff"
+    text-outline-width: 1
+
+# ホバー時のスタイル
+node_hover:
+  selector: "node:active"
+  style:
+    overlay-opacity: 0.2
+    overlay-color: "#3b82f6"
+
+edge_hover:
+  selector: "edge:active"
+  style:
+    line-color: "#3b82f6"
+    target-arrow-color: "#3b82f6"
+    width: 3
+    opacity: 1
+
+# 非表示要素
+hidden:
+  selector: ".hidden"
+  style:
+    display: none
+
+# 深さベースのノードスタイル
+node_depth_0:
+  selector: "node[depth = 0]"
+  style:
+    background-color: "#3b82f6"
+    
+node_depth_1:
+  selector: "node[depth = 1]"
+  style:
+    background-color: "#8b5cf6"
+    
+node_depth_2:
+  selector: "node[depth = 2]"
+  style:
+    background-color: "#ec4899"
+    
+node_depth_3:
+  selector: "node[depth = 3]"
+  style:
+    background-color: "#f97316"
